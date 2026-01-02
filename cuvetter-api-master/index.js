@@ -1,21 +1,21 @@
 require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const authRoutes = require('./routes/auth');
-const jobRoutes = require('./routes/jobs');
-const cors = require("cors");
+import express, { json } from 'express';
+import { connect } from 'mongoose';
+import authRoutes from './routes/auth';
+import jobRoutes from './routes/jobs';
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const corsOptions ={
-    origin:'*', 
+    origin:'*',
     credentials:true,
     optionSuccessStatus:200,
 }
 
 app.use(cors(corsOptions))
 
-mongoose.connect(process.env.MONGODB_URI)
+connect(process.env.MONGODB_URI)
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.log('MongoDB connection error:', err));
 
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.send('Test!');
 });
 
-app.use(express.json());
+app.use(json());
 app.use('/auth', authRoutes);
 app.use('/jobs', jobRoutes);
 
