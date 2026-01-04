@@ -1,4 +1,7 @@
 require('dotenv').config();
+import authRoutes from "./routes/auth.js";
+import connectDB from "./config/db.js";
+
 import express, { json } from 'express';
 import { connect } from 'mongoose';
 import authRoutes from './routes/auth';

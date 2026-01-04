@@ -76,4 +76,4 @@ This is the backend API for the Job Posting Board project, developed using the M
 
 ## Author
 
-- Yassin Slati
+- Aamir Hussain

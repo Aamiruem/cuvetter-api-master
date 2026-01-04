@@ -3,7 +3,7 @@ const { Vonage } = require('@vonage/server-sdk');
 
 const transporter = nodemailer.createTransport({
     service: "Gmail",
-    host: "smtp.gmail.com",
+    host: "aamir.gmail.com",
     port: 465,
     secure: true,
     auth: {
