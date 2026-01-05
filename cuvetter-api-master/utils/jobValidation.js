@@ -1,12 +1,30 @@
-const Joi = require("joi");
+// const Joi = require("joi");
 
-const jobSchema = Joi.object({
-    companyId: Joi.string().required(),
+// const jobSchema = Joi.object({
+//     companyId: Joi.string().required(),
+//     jobTitle: Joi.string().min(3).max(100).required(),
+//     jobDescription: Joi.string().min(10).max(2000).required(),
+//     experienceLevel: Joi.string().valid('Junior Developer', 'Mid-Level Developer', 'Senior Developer', 'Lead Developer').required(),
+//     candidate: Joi.array().items(Joi.string().email()).min(1).required(),
+//     endDate: Joi.date().iso().greater('now').required(),
+// });
+
+// module.exports = { jobSchema };
+
+
+
+
+
+import Joi from "joi";
+
+export const jobSchema = Joi.object({
+    // companyId is not required anymore because middleware provides it
+    // companyId: Joi.string().required(),
     jobTitle: Joi.string().min(3).max(100).required(),
     jobDescription: Joi.string().min(10).max(2000).required(),
-    experienceLevel: Joi.string().valid('Junior Developer', 'Mid-Level Developer', 'Senior Developer', 'Lead Developer').required(),
+    experienceLevel: Joi.string()
+        .valid('Junior Developer', 'Mid-Level Developer', 'Senior Developer', 'Lead Developer')
+        .required(),
     candidate: Joi.array().items(Joi.string().email()).min(1).required(),
     endDate: Joi.date().iso().greater('now').required(),
 });
-
-module.exports = { jobSchema };
